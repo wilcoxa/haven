@@ -22,11 +22,19 @@ test_that("value labels read in as same type as vector", {
 })
 
 test_that("date times are converted into corresponding R types", {
-  df <- read_sas("datetime.sas7bdat")
+  df <- read_sas(test_path("datetime.sas7bdat"))
   expect_equal(df$VAR1[1], ISOdatetime(2015, 02, 02, 14, 42, 12, "UTC"))
   expect_equal(df$VAR2[1], as.Date("2015-02-02"))
   expect_equal(df$VAR3[1], as.Date("2015-02-02"))
   expect_equal(df$VAR4[1], as.Date("2015-02-02"))
-  expect_equal(df$VAR5[1], hms(52932))
+  expect_equal(df$VAR5[1], hms::hms(52932))
 
+})
+
+test_that("tagged missings are read correctly", {
+  x <- read_sas(test_path("tagged-na.sas7bdat"), test_path("tagged-na.sas7bcat"))$x
+  expect_equal(na_tag(x), c(rep(NA, 5), "a", "h", "z"))
+
+  labels <- attr(x, "labels")
+  expect_equal(na_tag(labels), c("a", "z"))
 })

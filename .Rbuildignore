@@ -2,5 +2,12 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^cran-comments\.md$
-^NEWS\.md$
 ^revdep$
+^codecov\.yml$
+\.o$
+\.so$
+\.dll$
+^logo\.png$
+^_pkgdown\.yml$
+^docs$
+^appveyor\.yml$

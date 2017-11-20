@@ -1,15 +1,13 @@
-language: r
-warnings_are_errors: true
-sudo: required
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-env:
- global:
-   - CRAN: http://cran.rstudio.com
+language: R
+sudo: false
+cache: packages
 
-r_packages:
-  - Rcpp
+r:
+ - oldrel
+ - release
+ - devel
 
-r_github_packages:
-  - jimhester/covr
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - Rscript -e 'covr::codecov(line_exclusions = dir("src", pattern = "readstat", full.names = TRUE, recursive = TRUE))'

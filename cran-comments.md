@@ -1,21 +1,31 @@
-## Changes
+This is a resubmission, changing AUTHOR to COPYRIGHT HOLDER in license. 
 
-This update fixes a number of smaller bugs. It includes some improved UTF-8 handling, so may fix the problem on r-prerel-solaris-sparc. 
+---
 
 ## Test environments
-* local OS X install, R 3.1.3
-* ubuntu 12.04 (on travis-ci), R 3.1.3
-* win-builder (devel and release)
+* local OS X install, R 3.4.0
+* ubuntu 12.04 (on travis-ci), oldrel, release, devel
+* win-builder (devel)
 
 ## R CMD check results
-There were no ERRORs or WARNINGs. 
+0 ERRORs | 0 WARNINGs | 2 NOTEs
 
-There was 1 NOTE:
+* checking for GNU extensions in Makefiles ... NOTE
+  GNU make is a SystemRequirements.
 
-* Possibly mis-spelled words in DESCRIPTION:
-  ReadStat, SAS, SPSS and Stata - this are not misspelled.
+* License components with restrictions and base license permitting such:
+  MIT + file LICENSE
 
 ## Reverse dependencies
-I have run R CMD check on the 2 reverse dependencies of haven. There were no signficant problems.
+I have run R CMD check on the 13 reverse dependencies of haven. 
+I did not see any new issues.
 
-Full results are available at https://github.com/hadley/haven/tree/master/revdep/summary.md.
+I am using a new system for reverse dependency checks, co-developed with
+Gabor Csardi. Now, I run R CMD check twice for each revdep: once with the
+CRAN version of haven, and once with the development verison. I then
+compare the two, to see if there are any new problems. This substantially
+decreases the number of false positions and makes it much easier to
+see exactly what's changed.
+
+Full results are available at https://github.com/hadley/haven/tree/master/revdep/.
+
